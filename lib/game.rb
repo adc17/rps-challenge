@@ -11,12 +11,17 @@ class Game
     @game
   end
 
-  attr_reader :player_1, :player_2
+  attr_reader :player_1, :player_2, :turn
 
   def initialize(params)
     params = init_defaults.merge(params)
     @player_1 = params[:player_1]
     @player_2 = params[:player_2]
+    @turn = @player_1
+  end
+
+  def change_turn
+    turn == player_1 ? self.turn = player_2 : self.turn = player_1
   end
 
   def print_result
@@ -25,6 +30,8 @@ class Game
   end
 
   private
+
+  attr_writer :turn
 
   def init_defaults
     { player_2: AiPlayer.new }

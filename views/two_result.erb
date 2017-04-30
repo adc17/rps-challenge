@@ -1,5 +1,5 @@
 <% @game.player_1.set_choice(session[:p1choice]) %>
-<% @game.player_2.set_choice %>
+<% @game.player_2.set_choice(session[:p2choice]) %>
 <% @player_1 = @game.player_1.name %>
 <% @player_2 = @game.player_2.name %>
 <% @p1_choice = @game.player_1.choice.to_s.capitalize %>

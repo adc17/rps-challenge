@@ -3,6 +3,7 @@ class HumanPlayer
 
   def initialize(name)
     @name = name
+    @choice_made = false
   end
 
   def set_choice(arg)
@@ -13,11 +14,8 @@ class HumanPlayer
     choice.capitalize.to_s
   end
 
-  def sym_name
-    name.downcase.gsub(" ", "_").to_sym
-  end
-
   private
   attr_writer :choice
+  attr_accessor :choice_made
 
 end

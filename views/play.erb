@@ -1,6 +1,7 @@
 <% @player_1 = @game.player_1.name %>
+<% @player_2 = @game.player_2.name %>
 
-<h1><%= "#{@player_1} vs Random Ruby" %></h1>
+<h1><%= "#{@player_1} vs #{@player_2}" %></h1>
 <%= erb :image_partial %>
 <%= erb :rps_form_partial %>
-
+<%= "#{@player_1}, make your choice!" %>

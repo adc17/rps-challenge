@@ -10,8 +10,8 @@ class AiPlayer
     self.choice = [:rock, :paper, :scissors].sample
   end
 
-  def sym_name
-    name.downcase.gsub(" ", "_").to_sym
+  def choice_made?
+    true
   end
 
   private

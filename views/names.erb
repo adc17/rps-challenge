@@ -1,0 +1,14 @@
+<%= erb :header_partial %>
+<%= erb :image_partial %>
+<br>
+<% if @two_player %>
+  <form action='/2p-save-name' method='post'>
+<% else %>
+  <form action='/save-name' method='post'>
+<% end %>
+  <input name='player1' type='text'>
+  <% if @two_player %>
+  <input name='player2' type='text'>
+  <% end %>
+  <input value='Submit' type='submit'>
+</form>

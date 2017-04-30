@@ -1,10 +1,15 @@
 require 'game'
 
 describe Game do
-  let(:human) { double :human }
+
   let(:ai) { double :ai }
   let(:ai_class) { class_double("AiPlayer", new: ai).as_stubbed_const }
   before(:example) { stub_const("AiPlayer", ai_class) }
+
+  let(:human) { double :human }
+  let(:human_class) { class_double("HumanPlayer", new: human).as_stubbed_const }
+  before(:example) { stub_const("HumanPlayer", human_class) }
+
   subject(:game) { described_class.new({ player_1: human }) }
 
   describe '#initialize' do
@@ -12,15 +17,29 @@ describe Game do
     it 'saves a hash of players as attributes' do
       expect(game).to have_attributes(player_1: human)
     end
-
     it 'saves an AI player as player two' do
       expect(game).to have_attributes(player_2: ai)
     end
-
     it 'saves a second human player if provided ' do
       expect(Game.new({ player_1: human, player_2: human })).to have_attributes(player_2: human)
     end
+
   end
+
+  describe '#turn' do
+    it 'initializes as player 1' do
+      expect(game.turn).to eq human
+    end
+  end
+
+  describe '#change_turn' do
+    it 'changes @turn from p1 to p2' do
+      game.change_turn
+      expect(game.turn).to eq ai
+      end
+  end
+
+  # Warning: It gets ugly from here.
 
   describe '#print_result' do
     let(:always_scissors) { double :choice => :scissors, :name => "Always Scissors" }

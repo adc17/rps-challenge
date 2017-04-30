@@ -12,16 +12,16 @@ describe AiPlayer do
     end
   end
 
+  describe '#choice_made?' do
+    it 'returns true' do
+      expect(ai_player.choice_made?).to eq true
+    end
+  end
+
   describe '#set_choice' do
     it 'sets @choice to random option' do
       ai_player.set_choice
       expect(ai_player.choice).to_not be_nil
-    end
-  end
-
-  describe '#sym_name' do
-    it 'returns downcased underscored symbol of name' do
-      expect(ai_player.sym_name).to eq :random_ruby
     end
   end
 
